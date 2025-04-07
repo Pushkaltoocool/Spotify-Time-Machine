@@ -57,4 +57,4 @@ for song in songs:
 
 sp.playlist_add_items(playlist_id=playlist_id, items=song_urls)
 
-print("Created playlist titled : {year}, Added songs ✔")
+print(f"Created playlist titled : {year}, Added songs ✔")
