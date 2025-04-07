@@ -46,10 +46,15 @@ sp = spotipy.Spotify(
 playlist = sp.user_playlist_create(user=sp.current_user()['id'], name=year, collaborative=False, description="test")
 playlist_id = playlist['id']
 
+
 for song in songs:
     result = sp.search(q=song, limit=1, type='track')
-    if result['tracks']['items']:
+    try:
         track = result['tracks']['items'][0]
+    except:
         song_urls.append(track["uri"])
 
+
 sp.playlist_add_items(playlist_id=playlist_id, items=song_urls)
+
+print("Created playlist titled : {year}, Added songs ✔")
