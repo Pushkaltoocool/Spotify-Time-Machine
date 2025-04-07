@@ -51,8 +51,9 @@ for song in songs:
     result = sp.search(q=song, limit=1, type='track')
     try:
         track = result['tracks']['items'][0]
-    except:
         song_urls.append(track["uri"])
+    except IndexError:
+        print(f"Track not found for song: {song}")
 
 
 sp.playlist_add_items(playlist_id=playlist_id, items=song_urls)
